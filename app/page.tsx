@@ -22,7 +22,7 @@ export default function HomePage() {
           it helps you write impactful summaries, optimize skills, and generate ATS-friendly resumes instantly.
         </p>
 
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-6">
           <Button size="lg">Get Started</Button>
           <Button variant="outline" size="lg">
             Learn More
