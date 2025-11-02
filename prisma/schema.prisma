@@ -13,3 +13,24 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Profile {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  email     String
+  education String?
+  skills    String[]
+  summary   String?
+  createdAt DateTime @default(now())
+}
+
+model ColdEmail {
+  id          String   @id @default(cuid())
+  userId      String
+  senderName  String
+  recipient   String
+  context     String
+  generated   String
+  createdAt   DateTime @default(now())
+}
