@@ -9,10 +9,11 @@ import { motion } from "framer-motion";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/cold-email", label: "Cold Email" },
-  { href: "/cover-letter", label: "Cover Letter" },
+  { href: "/cold-email", label: "Cold Email/Letter" },
+  // { href: "/cover-letter", label: "Cover Letter" },
   { href: "/resume-analyzer", label: "Resume Analyzer" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/job-role-matcher", label: "Job Role Matcher" },
+  // { href: "/faq", label: "FAQ" },
 ];
 
 export default function Navbar() {
