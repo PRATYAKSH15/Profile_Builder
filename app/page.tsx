@@ -1,142 +1,183 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Brain, Database, PenTool } from "lucide-react";
+import Link from "next/link";
+import { Brain, PenTool, Mail, FileText, Sparkles } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col items-center justify-center px-6">
-      {/* Header */}
-      <header className="absolute top-5 right-5 flex items-center gap-4">
-        <SignedIn>
-          <UserButton afterSignOutUrl="/" />
-        </SignedIn>
-        <SignedOut>
-          <SignInButton>
-            <Button
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10"
-            >
-              Sign In
-            </Button>
-          </SignInButton>
-          <SignUpButton>
-            <Button className="bg-emerald-500 hover:bg-emerald-600">
-              Sign Up
-            </Button>
-          </SignUpButton>
-        </SignedOut>
-      </header>
-
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-center max-w-3xl mt-12"
-      >
+    <main className="bg-gradient-to-b from-slate-50 to-white text-slate-800">
+      {/* ---------- HERO SECTION ---------- */}
+      <section className="flex flex-col items-center text-center py-24 px-6">
         <motion.h1
-          className="text-5xl sm:text-6xl font-extrabold mb-4 bg-gradient-to-r from-emerald-400 via-sky-400 to-blue-500 bg-clip-text text-transparent"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-emerald-500 via-sky-500 to-blue-600 bg-clip-text text-transparent mb-6"
         >
-          Build Smarter Profiles with <span className="font-black">AI</span>
+          Build Smarter Profiles with AI
         </motion.h1>
 
-        <p className="text-slate-300 text-lg sm:text-xl mb-8">
-          Generate professional summaries, highlight your strengths, and get
-          skill recommendations instantly using{" "}
-          <span className="font-semibold text-emerald-400">Gemini AI</span>.
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="max-w-2xl text-lg text-slate-600 mb-8"
+        >
+          Generate powerful profile summaries, skill suggestions, cold emails, and cover letters — all powered by{" "}
+          <span className="text-emerald-500 font-semibold">Gemini AI</span>.
+        </motion.p>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+          className="flex flex-wrap gap-4 justify-center"
+        >
           <Link href="/dashboard">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-lg px-6 py-3">
-              Get Started <ArrowRight className="ml-2 w-5 h-5" />
+            <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-lg px-6">
+              Get Started
             </Button>
           </Link>
-          <Link href="/cold-email">
-            <Button
-              variant="outline"
-              className="border-white/30 text-white text-lg px-6 py-3 hover:bg-white/10"
-            >
-              Cold Email Generator
+          <Link href="/faq">
+            <Button size="lg" variant="outline" className="text-lg px-6">
+              Learn More
             </Button>
           </Link>
-          <a
-            href="https://github.com/your-repo-here"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Button
-              variant="outline"
-              className="border-white/30 text-white text-lg px-6 py-3 hover:bg-white/10"
-            >
-              View Source
-            </Button>
-          </a>
+        </motion.div>
+      </section>
+
+      {/* ---------- FEATURES ---------- */}
+      <section className="py-20 px-6 max-w-6xl mx-auto text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl sm:text-4xl font-bold mb-12 text-slate-800"
+        >
+          Key Features
+        </motion.h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <FeatureCard icon={<Brain className="text-emerald-500 w-8 h-8" />} title="AI Profile Summary" desc="Generate professional summaries tailored to your background and skills." />
+          <FeatureCard icon={<PenTool className="text-sky-500 w-8 h-8" />} title="Skill Suggestions" desc="Discover new in-demand skills relevant to your field." />
+          <FeatureCard icon={<Mail className="text-blue-500 w-8 h-8" />} title="Cold Email Generator" desc="Compose polished cold emails for recruiters or clients instantly." />
+          <FeatureCard icon={<FileText className="text-emerald-500 w-8 h-8" />} title="Cover Letter Creator" desc="Craft engaging, job-ready cover letters using AI guidance." />
         </div>
-      </motion.section>
+      </section>
 
-      {/* Features */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.7 }}
-        className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl"
-      >
-        <FeatureCard
-          icon={<Brain className="w-8 h-8 text-emerald-400" />}
-          title="AI-Powered Summaries"
-          desc="Generate tailored, recruiter-ready profile summaries in seconds."
-        />
-        <FeatureCard
-          icon={<PenTool className="w-8 h-8 text-sky-400" />}
-          title="Skill Suggestions"
-          desc="Get intelligent skill recommendations to strengthen your resume."
-        />
-        <FeatureCard
-          icon={<Database className="w-8 h-8 text-blue-400" />}
-          title="Secure Cloud Storage"
-          desc="Your profile data is safely stored with Clerk auth and PostgreSQL."
-        />
-      </motion.section>
+      {/* ---------- HOW IT WORKS ---------- */}
+      <section className="py-20 px-6 bg-slate-100 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl sm:text-4xl font-bold mb-12 text-slate-800"
+        >
+          How It Works
+        </motion.h2>
 
-      {/* Footer */}
-      <footer className="mt-24 text-slate-500 text-sm text-center">
-        © {new Date().getFullYear()} AI Profile Builder · Built with Next.js,
-        Clerk, Prisma, and Gemini API
-      </footer>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <StepCard step="1" title="Enter Your Details" desc="Provide basic info like name, skills, and target role." />
+          <StepCard step="2" title="AI Generates Content" desc="Gemini AI crafts optimized summaries, emails, and letters for you." />
+          <StepCard step="3" title="Review & Save" desc="Instantly copy or save your AI-generated results securely." />
+        </div>
+      </section>
+
+      {/* ---------- FAQ ---------- */}
+      <section className="py-20 px-6 max-w-3xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl sm:text-4xl font-bold mb-8 text-center"
+        >
+          Frequently Asked Questions
+        </motion.h2>
+
+        <Accordion type="single" collapsible className="space-y-4">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Is my data stored securely?</AccordionTrigger>
+            <AccordionContent>
+              Yes, your profile data is securely stored in PostgreSQL with Clerk authentication.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Which AI model powers this app?</AccordionTrigger>
+            <AccordionContent>
+              The app uses Google’s Gemini 1.5 / 2.5 models for generating summaries, skills, and emails.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Can I download my results?</AccordionTrigger>
+            <AccordionContent>
+              Yes, all generated content can be copied or exported to PDF instantly.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-4">
+            <AccordionTrigger>Do I need an account to use it?</AccordionTrigger>
+            <AccordionContent>
+              Yes, sign in with Clerk to save your generated content and access all features.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </section>
+
+      {/* ---------- CALL TO ACTION ---------- */}
+      <section className="py-20 px-6 text-center bg-gradient-to-r from-emerald-500 via-sky-500 to-blue-600 text-white">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl sm:text-4xl font-bold mb-4"
+        >
+          Ready to Build Your AI-Optimized Profile?
+        </motion.h2>
+        <p className="text-slate-100 mb-8 max-w-2xl mx-auto">
+          Join thousands of users using AI to level up their resumes and outreach. Get started in seconds — no design skills needed.
+        </p>
+        <Link href="/dashboard">
+          <Button size="lg" className="bg-white text-emerald-600 hover:bg-slate-100 px-6 text-lg font-semibold">
+            Start Now
+          </Button>
+        </Link>
+      </section>
     </main>
   );
 }
 
-function FeatureCard({
-  icon,
-  title,
-  desc,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-}) {
+/* ------------------- Helper Components ------------------- */
+
+function FeatureCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
   return (
-    <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition">
-      <div className="flex items-center gap-3 mb-3">
-        {icon}
-        <h3 className="font-semibold text-lg">{title}</h3>
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 200 }}
+      className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg border border-slate-100 text-left"
+    >
+      <div className="flex items-center gap-3 mb-4">{icon}<h3 className="font-semibold text-lg">{title}</h3></div>
+      <p className="text-slate-600 text-sm">{desc}</p>
+    </motion.div>
+  );
+}
+
+function StepCard({ step, title, desc }: { step: string; title: string; desc: string }) {
+  return (
+    <motion.div
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 200 }}
+      className="bg-white p-6 rounded-2xl shadow-md border border-slate-100"
+    >
+      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-emerald-500 text-white font-bold text-lg mb-3 mx-auto">
+        {step}
       </div>
-      <p className="text-slate-300 text-sm leading-relaxed">{desc}</p>
-    </div>
+      <h3 className="font-semibold text-lg mb-2">{title}</h3>
+      <p className="text-slate-600 text-sm">{desc}</p>
+    </motion.div>
   );
 }
