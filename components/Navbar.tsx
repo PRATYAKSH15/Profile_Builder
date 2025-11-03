@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/cold-email", label: "Cold Email" },
   { href: "/cover-letter", label: "Cover Letter" },
+  { href: "/resume-analyzer", label: "Resume Analyzer" },
   { href: "/faq", label: "FAQ" },
 ];
 
