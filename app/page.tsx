@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Brain, PenTool, Mail, FileText, Sparkles } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function HomePage() {
   return (
@@ -26,7 +31,8 @@ export default function HomePage() {
           transition={{ delay: 0.3, duration: 0.7 }}
           className="max-w-2xl text-lg text-slate-600 mb-8"
         >
-          Generate powerful profile summaries, skill suggestions, cold emails, and cover letters — all powered by{" "}
+          Generate powerful profile summaries, skill suggestions, cold emails,
+          and cover letters — all powered by{" "}
           <span className="text-emerald-500 font-semibold">Gemini AI</span>.
         </motion.p>
 
@@ -37,7 +43,10 @@ export default function HomePage() {
           className="flex flex-wrap gap-4 justify-center"
         >
           <Link href="/dashboard">
-            <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-lg px-6">
+            <Button
+              size="lg"
+              className="bg-emerald-500 hover:bg-emerald-600 text-lg px-6"
+            >
               Get Started
             </Button>
           </Link>
@@ -47,6 +56,75 @@ export default function HomePage() {
             </Button>
           </Link>
         </motion.div>
+      </section>
+
+      {/* ---------- ABOUT SECTION ---------- */}
+      <section className="relative py-20 px-6 overflow-hidden">
+        {/* Background Grid */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,#e2e8f0_1px,transparent_0)] [background-size:20px_20px] opacity-40" />
+
+        <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+          {/* LEFT SIDE - Typewriter Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-left space-y-6"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 leading-tight">
+              <span className="inline-block border-r-4 border-emerald-500 pr-2 animate-typing overflow-hidden whitespace-nowrap">
+                About AI Profile Builder 👩🏻‍🎓
+              </span>
+            </h2>
+
+            <p className="text-slate-600 text-lg leading-relaxed">
+              AI Profile Builder empowers students and professionals to showcase
+              their strengths with confidence. Powered by Google’s Gemini AI, it
+              helps you build a standout profile that highlights your potential.
+            </p>
+
+            {/* <Link href="/dashboard"> */}
+              <Button
+                size="lg"
+                className="bg-emerald-500 hover:bg-emerald-600 text-lg px-6"
+              >
+                Explore below for more
+              </Button>
+            {/* </Link> */}
+          </motion.div>
+
+          {/* RIGHT SIDE - Feature Points */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="text-left md:pl-6"
+          >
+            <h3 className="text-2xl font-semibold text-slate-800 mb-4">
+              Why to use? 🚀
+            </h3>
+            <ul className="space-y-4 text-slate-600 text-lg">
+              <li className="flex items-start gap-3">
+                <span className="text-emerald-500 text-xl">•</span>
+                Generate impactful profile summaries with Gemini AI
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-emerald-500 text-xl">•</span>
+                Identify missing or trending skills in your domain
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-emerald-500 text-xl">•</span>
+                Craft professional outreach or connection messages
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-emerald-500 text-xl">•</span>
+                Get personalized insights to enhance your portfolio
+              </li>
+            </ul>
+          </motion.div>
+        </div>
       </section>
 
       {/* ---------- FEATURES ---------- */}
@@ -61,10 +139,26 @@ export default function HomePage() {
         </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <FeatureCard icon={<Brain className="text-emerald-500 w-8 h-8" />} title="AI Profile Summary" desc="Generate professional summaries tailored to your background and skills." />
-          <FeatureCard icon={<PenTool className="text-sky-500 w-8 h-8" />} title="Skill Suggestions" desc="Discover new in-demand skills relevant to your field." />
-          <FeatureCard icon={<Mail className="text-blue-500 w-8 h-8" />} title="Cold Email Generator" desc="Compose polished cold emails for recruiters or clients instantly." />
-          <FeatureCard icon={<FileText className="text-emerald-500 w-8 h-8" />} title="Cover Letter Creator" desc="Craft engaging, job-ready cover letters using AI guidance." />
+          <FeatureCard
+            icon={<Brain className="text-emerald-500 w-8 h-8" />}
+            title="AI Profile Summary"
+            desc="Generate professional summaries tailored to your background and skills."
+          />
+          <FeatureCard
+            icon={<PenTool className="text-sky-500 w-8 h-8" />}
+            title="Skill Suggestions"
+            desc="Discover new in-demand skills relevant to your field."
+          />
+          <FeatureCard
+            icon={<Mail className="text-blue-500 w-8 h-8" />}
+            title="Cold Email Generator"
+            desc="Compose polished cold emails for recruiters or clients instantly."
+          />
+          <FeatureCard
+            icon={<FileText className="text-emerald-500 w-8 h-8" />}
+            title="Cover Letter Creator"
+            desc="Craft engaging, job-ready cover letters using AI guidance."
+          />
         </div>
       </section>
 
@@ -80,9 +174,21 @@ export default function HomePage() {
         </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <StepCard step="1" title="Enter Your Details" desc="Provide basic info like name, skills, and target role." />
-          <StepCard step="2" title="AI Generates Content" desc="Gemini AI crafts optimized summaries, emails, and letters for you." />
-          <StepCard step="3" title="Review & Save" desc="Instantly copy or save your AI-generated results securely." />
+          <StepCard
+            step="1"
+            title="Enter Your Details"
+            desc="Provide basic info like name, skills, and target role."
+          />
+          <StepCard
+            step="2"
+            title="AI Generates Content"
+            desc="Gemini AI crafts optimized summaries, emails, and letters for you."
+          />
+          <StepCard
+            step="3"
+            title="Review & Save"
+            desc="Instantly copy or save your AI-generated results securely."
+          />
         </div>
       </section>
 
@@ -101,31 +207,66 @@ export default function HomePage() {
           <AccordionItem value="item-1">
             <AccordionTrigger>Is my data stored securely?</AccordionTrigger>
             <AccordionContent>
-              Yes, your profile data is securely stored in PostgreSQL with Clerk authentication.
+              Yes, your profile data is securely stored in PostgreSQL with Clerk
+              authentication.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="item-2">
             <AccordionTrigger>Which AI model powers this app?</AccordionTrigger>
             <AccordionContent>
-              The app uses Google’s Gemini 1.5 / 2.5 models for generating summaries, skills, and emails.
+              The app uses Google’s Gemini 1.5 / 2.5 models for generating
+              summaries, skills, and emails.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="item-3">
             <AccordionTrigger>Can I download my results?</AccordionTrigger>
             <AccordionContent>
-              Yes, all generated content can be copied or exported to PDF instantly.
+              Yes, all generated content can be copied or exported to PDF
+              instantly.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="item-4">
             <AccordionTrigger>Do I need an account to use it?</AccordionTrigger>
             <AccordionContent>
-              Yes, sign in with Clerk to save your generated content and access all features.
+              Yes, sign in with Clerk to save your generated content and access
+              all features.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+      </section>
+
+      {/* ---------- TESTIMONIALS ---------- */}
+      <section className="py-20 px-6 bg-gradient-to-b from-slate-100 to-slate-50">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl sm:text-4xl font-bold text-center mb-12 text-slate-800"
+        >
+          Loved by Students & Professionals
+        </motion.h2>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <TestimonialCard
+            name="Aarav Mehta"
+            role="Computer Science Student"
+            feedback="The AI summary generator saved me hours! My resume now looks professional and recruiter-ready."
+          />
+          <TestimonialCard
+            name="Neha Kapoor"
+            role="Marketing Intern"
+            feedback="The cold email tool helped me connect with startups — got two internship offers!"
+          />
+          <TestimonialCard
+            name="Rohit Sharma"
+            role="Full-Stack Developer"
+            feedback="Loved the minimal UI and Gemini AI integration. Feels like a real SaaS product."
+          />
+        </div>
       </section>
 
       {/* ---------- CALL TO ACTION ---------- */}
@@ -139,10 +280,14 @@ export default function HomePage() {
           Ready to Build Your AI-Optimized Profile?
         </motion.h2>
         <p className="text-slate-100 mb-8 max-w-2xl mx-auto">
-          Join thousands of users using AI to level up their resumes and outreach. Get started in seconds — no design skills needed.
+          Join thousands of users using AI to level up their resumes and
+          outreach. Get started in seconds — no design skills needed.
         </p>
         <Link href="/dashboard">
-          <Button size="lg" className="bg-white text-emerald-600 hover:bg-slate-100 px-6 text-lg font-semibold">
+          <Button
+            size="lg"
+            className="bg-white text-emerald-600 hover:bg-slate-100 px-6 text-lg font-semibold"
+          >
             Start Now
           </Button>
         </Link>
@@ -153,20 +298,39 @@ export default function HomePage() {
 
 /* ------------------- Helper Components ------------------- */
 
-function FeatureCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
+function FeatureCard({
+  icon,
+  title,
+  desc,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+}) {
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 200 }}
       className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg border border-slate-100 text-left"
     >
-      <div className="flex items-center gap-3 mb-4">{icon}<h3 className="font-semibold text-lg">{title}</h3></div>
+      <div className="flex items-center gap-3 mb-4">
+        {icon}
+        <h3 className="font-semibold text-lg">{title}</h3>
+      </div>
       <p className="text-slate-600 text-sm">{desc}</p>
     </motion.div>
   );
 }
 
-function StepCard({ step, title, desc }: { step: string; title: string; desc: string }) {
+function StepCard({
+  step,
+  title,
+  desc,
+}: {
+  step: string;
+  title: string;
+  desc: string;
+}) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -178,6 +342,30 @@ function StepCard({ step, title, desc }: { step: string; title: string; desc: st
       </div>
       <h3 className="font-semibold text-lg mb-2">{title}</h3>
       <p className="text-slate-600 text-sm">{desc}</p>
+    </motion.div>
+  );
+}
+
+function TestimonialCard({
+  name,
+  role,
+  feedback,
+}: {
+  name: string;
+  role: string;
+  feedback: string;
+}) {
+  return (
+    <motion.div
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 150 }}
+      className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-left"
+    >
+      <p className="text-slate-600 italic mb-4">“{feedback}”</p>
+      <div>
+        <h4 className="font-semibold text-slate-800">{name}</h4>
+        <p className="text-sm text-slate-500">{role}</p>
+      </div>
     </motion.div>
   );
 }
