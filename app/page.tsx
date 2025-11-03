@@ -146,8 +146,8 @@ export default function HomePage() {
           />
           <FeatureCard
             icon={<PenTool className="text-sky-500 w-8 h-8" />}
-            title="Skill Suggestions"
-            desc="Discover new in-demand skills relevant to your field."
+            title="Resume Analyzer"
+            desc="get personalized feedback to optimize your resume for ATS and recruiters."
           />
           <FeatureCard
             icon={<Mail className="text-blue-500 w-8 h-8" />}
@@ -159,6 +159,11 @@ export default function HomePage() {
             title="Cover Letter Creator"
             desc="Craft engaging, job-ready cover letters using AI guidance."
           />
+          {/* <FeatureCard
+            icon={<PenTool className="text-sky-500 w-8 h-8" />}
+            title="Skill Suggestions"
+            desc="Discover new in-demand skills relevant to your field."
+          /> */}
         </div>
       </section>
 
