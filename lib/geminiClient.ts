@@ -11,17 +11,21 @@ const client = new GoogleGenerativeAI(API_KEY);
 function buildPrompt(resumeText: string, jobRole?: string) {
   const roleLine = jobRole ? `For role: ${jobRole}\n` : "";
   return `
-You are an expert technical interviewer and career coach.
-Based on the resume content below, generate 10 realistic interview questions and high-quality sample answers.
-- For each item provide: Question, Sample Answer (1-3 paragraphs), and which skill/experience it tests.
-- Give output as Markdown. Also include a JSON array at the end under a header "### JSON_OUTPUT" which is an array of objects like:
-  [{ "question": "...", "answer":"...", "tests":"..."}]
+## Interview Questions & Answers
+
+Based on the resume content below, generate **10 interview questions**.
+Format must be:
+
+### Q: <question>
+**Answer:** <2-4 sentence answer>
+**Skill Tested:** <short skill name>
+
+Add two blank line between each section.
+DO NOT return code blocks around the response.
 
 ${roleLine}
 Resume:
 ${resumeText}
-
-Be concise, specific to the candidate's experience, and avoid generic filler questions.
 `;
 }
 
