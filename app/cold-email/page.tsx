@@ -55,22 +55,27 @@ export default function ColdEmailPage() {
   };
 
   if (!isLoaded || !isSignedIn) {
-    return <div className="text-center mt-20 text-white">Checking authentication...</div>;
+    return (
+      <div className="text-center mt-20 text-white">
+        Checking authentication...
+      </div>
+    );
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col items-center px-4 py-12">
+    <main className="min-h-screen bg-white flex flex-col items-center px-4 py-12">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl w-full bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-white/10 shadow-lg"
+        className="max-w-3xl w-full bg-white p-8 rounded-2xl border shadow-md"
       >
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-emerald-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
-          AI Cold Email Generator
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-emerald-600">
+          Cold Email & Cover Letter Generator
         </h1>
-        <p className="text-slate-300 text-center mb-8">
-          Generate personalized, professional cold emails in seconds using Gemini AI.
+        <p className="text-gray-700 text-center mb-8">
+          Generate personalized, professional cold emails in seconds using
+          Gemini AI.
         </p>
 
         <div className="space-y-4">
@@ -79,29 +84,28 @@ export default function ColdEmailPage() {
             placeholder="Your Name"
             value={form.name}
             onChange={handleChange}
-            className="bg-white/5 border-white/10 text-white placeholder:text-slate-400"
+            className="border border-gray-300 rounded-md p-2 w-full"
           />
           <Input
             name="recipient"
             placeholder="Recipient or Company Name"
             value={form.recipient}
             onChange={handleChange}
-            className="bg-white/5 border-white/10 text-white placeholder:text-slate-400"
+            className="border border-gray-300 rounded-md p-2 w-full"
           />
           <Textarea
             name="context"
             placeholder="Purpose (e.g. applying for internship, reaching out for collaboration)"
             value={form.context}
             onChange={handleChange}
-            className="bg-white/5 border-white/10 text-white placeholder:text-slate-400 min-h-[120px]"
+            className="border border-gray-300 rounded-md p-2 w-full min-h-[120px]"
           />
 
           <Button
             onClick={handleGenerate}
             disabled={loading}
-            className="w-full bg-emerald-500 hover:bg-emerald-600 flex items-center justify-center gap-2"
+            className="w-full bg-emerald-500 hover:bg-emerald-600 text-white"
           >
-            <Sparkles className="w-4 h-4" />
             {loading ? "Generating..." : "Generate Email"}
           </Button>
         </div>
@@ -111,22 +115,20 @@ export default function ColdEmailPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mt-6 bg-white/5 p-5 rounded-lg border border-white/10 text-slate-100"
+            className="mt-6 bg-gray-50 p-5 rounded-lg border border-gray-200 text-gray-800"
           >
             <div className="flex justify-between items-center mb-2">
-              <h2 className="font-semibold text-lg text-emerald-400">
+              <h2 className="font-semibold text-lg text-emerald-600">
                 Generated Email:
               </h2>
               <button
                 onClick={() => navigator.clipboard.writeText(result)}
-                className="text-sm text-emerald-300 hover:text-emerald-400 transition"
+                className="text-sm text-emerald-500 hover:text-emerald-600 transition"
               >
                 📋 Copy
               </button>
             </div>
-            <pre className="whitespace-pre-wrap leading-relaxed text-slate-200">
-              {result}
-            </pre>
+            <pre className="whitespace-pre-wrap leading-relaxed">{result}</pre>
           </motion.div>
         )}
       </motion.div>
