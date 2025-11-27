@@ -14,6 +14,7 @@ const navLinks = [
   { href: "/resume-analyzer", label: "Resume Analyzer" },
   { href: "/job-role-matcher", label: "Job Role Matcher" },
   // { href: "/faq", label: "FAQ" },
+  { href: "/interview", label: "Interview Prep" },
 ];
 
 export default function Navbar() {
