@@ -95,17 +95,28 @@
 // }
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, useSpring, useTransform } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function ResumeAnalyzerPage() {
-  
+  const { isSignedIn, isLoaded } = useUser();
+  const router = useRouter();
+
   const [resumeText, setResumeText] = useState("");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<any>(null);
+
+  // Redirect to login if not signed in
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      router.push("/sign-in"); // redirect to login page
+    }
+  }, [isLoaded, isSignedIn, router]);
 
   const analyzeResume = async () => {
     if (!resumeText.trim()) return;
@@ -127,6 +138,10 @@ export default function ResumeAnalyzerPage() {
       setLoading(false);
     }
   };
+
+  if (!isLoaded || !isSignedIn) {
+    return <div className="text-center mt-20">Checking authentication...</div>;
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-20 px-6">
@@ -159,9 +174,7 @@ export default function ResumeAnalyzerPage() {
           {loading ? "Analyzing..." : "Analyze Resume"}
         </Button>
 
-        {feedback && (
-          <ResultCard feedback={feedback} />
-        )}
+        {feedback && <ResultCard feedback={feedback} />}
       </div>
     </main>
   );
@@ -216,10 +229,7 @@ function ResultCard({ feedback }: { feedback: any }) {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center flex-col">
-          <motion.span
-            className="text-4xl font-bold"
-            style={{ color }}
-          >
+          <motion.span className="text-4xl font-bold" style={{ color }}>
             {score}
           </motion.span>
           <span className="text-sm text-slate-500">out of 100</span>

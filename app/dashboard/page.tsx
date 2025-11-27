@@ -1,10 +1,13 @@
 import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import ProfileForm from "@/components/ProfileForm";
 
 export default async function DashboardPage() {
-  const { userId } = await auth(); //
+  const { userId } = await auth();
+
   if (!userId) {
-    return <div className="text-center mt-20">Please log in to continue.</div>;
+    // Redirect to login page if not authenticated
+    redirect("/sign-in");
   }
 
   return (

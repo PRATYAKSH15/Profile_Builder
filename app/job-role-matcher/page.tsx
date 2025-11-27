@@ -1,14 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useUser } from "@clerk/nextjs"; // or your auth hook
+import { useRouter } from "next/navigation";
 
 export default function JobRoleMatcherPage() {
+  const { isSignedIn, isLoaded } = useUser();
+  const router = useRouter();
   const [userInfo, setUserInfo] = useState("");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<any>(null);
+
+  // Redirect to login if not signed in
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      router.push("/sign-in"); // redirect to login page
+    }
+  }, [isLoaded, isSignedIn, router]);
 
   const analyzeRoles = async () => {
     if (!userInfo.trim()) return;
@@ -30,6 +41,11 @@ export default function JobRoleMatcherPage() {
       setLoading(false);
     }
   };
+
+  if (!isLoaded || !isSignedIn) {
+    // Optional: show a loader while auth is being checked
+    return <div className="text-center mt-20">Checking authentication...</div>;
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-20 px-6">
@@ -62,9 +78,7 @@ export default function JobRoleMatcherPage() {
           {loading ? "Analyzing..." : "Find My Best Roles"}
         </Button>
 
-        {feedback && (
-          <Results feedback={feedback} />
-        )}
+        {feedback && <Results feedback={feedback} />}
       </div>
     </main>
   );

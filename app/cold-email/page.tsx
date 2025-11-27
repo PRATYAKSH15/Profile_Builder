@@ -1,13 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Sparkles } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function ColdEmailPage() {
+  const { isSignedIn, isLoaded } = useUser();
+  const router = useRouter();
+
   const [form, setForm] = useState({
     name: "",
     recipient: "",
@@ -15,6 +20,13 @@ export default function ColdEmailPage() {
   });
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Redirect to login if not signed in
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      router.push("/sign-in");
+    }
+  }, [isLoaded, isSignedIn, router]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,16 +38,25 @@ export default function ColdEmailPage() {
     setLoading(true);
     setResult("");
 
-    const res = await fetch("/api/generate-cold-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    const data = await res.json();
-    setResult(data.email || "Something went wrong. Please try again.");
-    setLoading(false);
+    try {
+      const res = await fetch("/api/generate-cold-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      setResult(data.email || "Something went wrong. Please try again.");
+    } catch (err) {
+      console.error(err);
+      setResult("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  if (!isLoaded || !isSignedIn) {
+    return <div className="text-center mt-20 text-white">Checking authentication...</div>;
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col items-center px-4 py-12">
@@ -49,8 +70,7 @@ export default function ColdEmailPage() {
           AI Cold Email Generator
         </h1>
         <p className="text-slate-300 text-center mb-8">
-          Generate personalized, professional cold emails in seconds using
-          Gemini AI.
+          Generate personalized, professional cold emails in seconds using Gemini AI.
         </p>
 
         <div className="space-y-4">
@@ -98,9 +118,7 @@ export default function ColdEmailPage() {
                 Generated Email:
               </h2>
               <button
-                onClick={() => {
-                  navigator.clipboard.writeText(result);
-                }}
+                onClick={() => navigator.clipboard.writeText(result)}
                 className="text-sm text-emerald-300 hover:text-emerald-400 transition"
               >
                 📋 Copy
