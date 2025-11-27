@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/job-role-matcher", label: "Job Role Matcher" },
   // { href: "/faq", label: "FAQ" },
   { href: "/interview", label: "Interview Q&A" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/contact", label: "Contact Us" },
 ];
 

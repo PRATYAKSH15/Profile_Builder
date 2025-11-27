@@ -50,9 +50,9 @@ export default function HomePage() {
               Get Started
             </Button>
           </Link>
-          <Link href="/faq">
+          <Link href="/pricing">
             <Button size="lg" variant="outline" className="text-lg px-6">
-              Learn More
+              See Pricing
             </Button>
           </Link>
         </motion.div>
