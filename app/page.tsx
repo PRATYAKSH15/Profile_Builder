@@ -3,7 +3,16 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Brain, PenTool, Mail, FileText, Sparkles,Briefcase, Headphones, Lightbulb } from "lucide-react";
+import {
+  Brain,
+  PenTool,
+  Mail,
+  FileText,
+  Sparkles,
+  Briefcase,
+  Headphones,
+  Lightbulb,
+} from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -15,46 +24,70 @@ export default function HomePage() {
   return (
     <main className="bg-gradient-to-b from-slate-50 to-white text-slate-800">
       {/* ---------- HERO SECTION ---------- */}
-      <section className="flex flex-col items-center text-center py-24 px-6">
+      <section className="relative flex flex-col items-center text-center py-28 px-6 overflow-hidden">
+        {/* Decorative Grid Background */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 pointer-events-none" />
+
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-emerald-500 via-sky-500 to-blue-600 bg-clip-text text-transparent mb-6"
+          transition={{ duration: 0.6 }}
+          className="text-5xl sm:text-7xl font-extrabold text-slate-900 leading-tight"
         >
-          Build Smarter Profiles with AI
+          Future-Ready Career Profile
+          <br />
+          <span className="text-emerald-600">Smarter Tools for Better Results</span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          className="max-w-2xl text-lg text-slate-600 mb-8"
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="max-w-2xl text-lg sm:text-xl text-slate-600 mt-6"
         >
-          Generate powerful profile summaries, skill suggestions, cold emails,
-          and cover letters — all powered by{" "}
-          <span className="text-emerald-500 font-semibold">Gemini AI</span>.
+          Create a powerful online presence. AI generates summaries, skills,
+          emails & more — tailored to your goals using{" "}
+          <span className="text-emerald-600 font-semibold">Gemini AI</span>.
         </motion.p>
 
+        {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.7 }}
-          className="flex flex-wrap gap-4 justify-center"
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="flex flex-wrap gap-4 justify-center mt-10"
         >
           <Link href="/dashboard">
             <Button
               size="lg"
-              className="bg-emerald-500 hover:bg-emerald-600 text-lg px-6"
+              className="bg-emerald-600 hover:bg-emerald-700 text-lg px-8"
             >
-              Get Started
+              Create Profile
             </Button>
           </Link>
           <Link href="/pricing">
-            <Button size="lg" variant="outline" className="text-lg px-6">
-              See Pricing
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 border-slate-300 hover:bg-slate-100"
+            >
+              Pricing
             </Button>
           </Link>
+        </motion.div>
+        
+
+        {/* Scroll Animated Stats */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="grid grid-cols-3 gap-8 max-w-xl mx-auto text-center mt-20"
+        >
+          <Stat value="10K+" label="Profiles Enhanced" />
+          <Stat value="1.2K+" label="Resumes Improved" />
+          <Stat value="98%" label="Positive Feedback" />
         </motion.div>
       </section>
 
@@ -85,12 +118,12 @@ export default function HomePage() {
             </p>
 
             {/* <Link href="/dashboard"> */}
-              <Button
-                size="lg"
-                className="bg-emerald-500 hover:bg-emerald-600 text-lg px-6"
-              >
-                Explore below for more
-              </Button>
+            <Button
+              size="lg"
+              className="bg-emerald-500 hover:bg-emerald-600 text-lg px-6"
+            >
+              Explore below for more
+            </Button>
             {/* </Link> */}
           </motion.div>
 
@@ -128,60 +161,59 @@ export default function HomePage() {
       </section>
 
       {/* ---------- FEATURES ---------- */}
-<section className="py-20 px-6 max-w-7xl mx-auto text-center">
-  <motion.h2
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7 }}
-    className="text-3xl sm:text-4xl font-bold mb-12 text-slate-800"
-  >
-    Key Features
-  </motion.h2>
+      <section className="py-20 px-6 max-w-7xl mx-auto text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl sm:text-4xl font-bold mb-12 text-slate-800"
+        >
+          Key Features
+        </motion.h2>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-    <FeatureCard
-      icon={<Brain className="text-emerald-500 w-8 h-8" />}
-      title="AI Profile Summary"
-      desc="Generate professional summaries tailored to your background and skills."
-    />
-    <FeatureCard
-      icon={<PenTool className="text-sky-500 w-8 h-8" />}
-      title="Resume Analyzer"
-      desc="Score and improve your resume for ATS and recruiter visibility."
-    />
-    <FeatureCard
-      icon={<Mail className="text-blue-500 w-8 h-8" />}
-      title="Cold Email Generator"
-      desc="Create polished outreach emails for recruiters or clients instantly."
-    />
-    <FeatureCard
-      icon={<FileText className="text-emerald-500 w-8 h-8" />}
-      title="Cover Letter Creator"
-      desc="Craft job-ready cover letters customized to the role."
-    />
-    <FeatureCard
-      icon={<Sparkles className="text-pink-500 w-8 h-8" />}
-      title="Interview Q&A"
-      desc="Generate realistic interview questions and AI-powered answers."
-    />
-    <FeatureCard
-      icon={<Briefcase className="text-indigo-500 w-8 h-8" />}
-      title="Job Role Matcher"
-      desc="Find the best job roles based on your skills and experience."
-    />
-    <FeatureCard
-      icon={<Lightbulb className="text-amber-500 w-8 h-8" />}
-      title="Skill Suggestions"
-      desc="Discover missing skills to boost your career profile."
-    />
-    <FeatureCard
-      icon={<Headphones className="text-red-500 w-8 h-8" />}
-      title="Support & Assistance"
-      desc="Easily contact our team for help or feature requests."
-    />
-  </div>
-</section>
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <FeatureCard
+            icon={<Brain className="text-emerald-500 w-8 h-8" />}
+            title="AI Profile Summary"
+            desc="Generate professional summaries tailored to your background and skills."
+          />
+          <FeatureCard
+            icon={<PenTool className="text-sky-500 w-8 h-8" />}
+            title="Resume Analyzer"
+            desc="Score and improve your resume for ATS and recruiter visibility."
+          />
+          <FeatureCard
+            icon={<Mail className="text-blue-500 w-8 h-8" />}
+            title="Cold Email Generator"
+            desc="Create polished outreach emails for recruiters or clients instantly."
+          />
+          <FeatureCard
+            icon={<FileText className="text-emerald-500 w-8 h-8" />}
+            title="Cover Letter Creator"
+            desc="Craft job-ready cover letters customized to the role."
+          />
+          <FeatureCard
+            icon={<Sparkles className="text-pink-500 w-8 h-8" />}
+            title="Interview Q&A"
+            desc="Generate realistic interview questions and AI-powered answers."
+          />
+          <FeatureCard
+            icon={<Briefcase className="text-indigo-500 w-8 h-8" />}
+            title="Job Role Matcher"
+            desc="Find the best job roles based on your skills and experience."
+          />
+          <FeatureCard
+            icon={<Lightbulb className="text-amber-500 w-8 h-8" />}
+            title="Skill Suggestions"
+            desc="Discover missing skills to boost your career profile."
+          />
+          <FeatureCard
+            icon={<Headphones className="text-red-500 w-8 h-8" />}
+            title="Support & Assistance"
+            desc="Easily contact our team for help or feature requests."
+          />
+        </div>
+      </section>
 
       {/* ---------- HOW IT WORKS ---------- */}
       <section className="py-20 px-6 bg-slate-100 text-center">
@@ -387,6 +419,20 @@ function TestimonialCard({
         <h4 className="font-semibold text-slate-800">{name}</h4>
         <p className="text-sm text-slate-500">{role}</p>
       </div>
+    </motion.div>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <motion.div
+      whileInView={{ scale: [0.8, 1] }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="flex flex-col items-center"
+    >
+      <h3 className="text-4xl font-bold text-slate-900">{value}</h3>
+      <p className="text-slate-600 text-sm mt-1">{label}</p>
     </motion.div>
   );
 }
