@@ -1,6 +1,7 @@
 // app/interview/page.tsx
 import React from "react";
 import UploadResume from "./UploadResume";
+import { auth } from "@clerk/nextjs/server"; // or your auth import
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
@@ -9,7 +10,23 @@ export const metadata = {
     "Upload your resume and generate realistic interview questions & answers using AI.",
 };
 
-export default function InterviewPage() {
+export default async function InterviewPage() {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return (
+      <div className="text-center mt-20">
+        <p className="text-lg mb-4">Please log in to continue.</p>
+        <a
+          href="/sign-in"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        >
+          Go to Login
+        </a>
+      </div>
+    );
+  }
+
   return (
     <main className="w-full flex flex-col items-center">
       <section className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-14">
@@ -27,7 +44,7 @@ export default function InterviewPage() {
         <h2 className="text-xl font-semibold mb-3 text-gray-900">
           Upload your resume (PDF)
         </h2>
-    
+
         <p className="text-sm text-gray-600 mb-6">
           AI extracts your skills and experience to generate realistic interview questions
           with professional answers.

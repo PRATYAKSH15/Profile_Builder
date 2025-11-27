@@ -102,6 +102,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function ResumeAnalyzerPage() {
+  
   const [resumeText, setResumeText] = useState("");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<any>(null);
