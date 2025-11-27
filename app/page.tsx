@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Brain, PenTool, Mail, FileText, Sparkles } from "lucide-react";
+import { Brain, PenTool, Mail, FileText, Sparkles,Briefcase, Headphones, Lightbulb } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -128,44 +128,60 @@ export default function HomePage() {
       </section>
 
       {/* ---------- FEATURES ---------- */}
-      <section className="py-20 px-6 max-w-6xl mx-auto text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-3xl sm:text-4xl font-bold mb-12 text-slate-800"
-        >
-          Key Features
-        </motion.h2>
+<section className="py-20 px-6 max-w-7xl mx-auto text-center">
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7 }}
+    className="text-3xl sm:text-4xl font-bold mb-12 text-slate-800"
+  >
+    Key Features
+  </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <FeatureCard
-            icon={<Brain className="text-emerald-500 w-8 h-8" />}
-            title="AI Profile Summary"
-            desc="Generate professional summaries tailored to your background and skills."
-          />
-          <FeatureCard
-            icon={<PenTool className="text-sky-500 w-8 h-8" />}
-            title="Resume Analyzer"
-            desc="get personalized feedback to optimize your resume for ATS and recruiters."
-          />
-          <FeatureCard
-            icon={<Mail className="text-blue-500 w-8 h-8" />}
-            title="Cold Email Generator"
-            desc="Compose polished cold emails for recruiters or clients instantly."
-          />
-          <FeatureCard
-            icon={<FileText className="text-emerald-500 w-8 h-8" />}
-            title="Cover Letter Creator"
-            desc="Craft engaging, job-ready cover letters using AI guidance."
-          />
-          {/* <FeatureCard
-            icon={<PenTool className="text-sky-500 w-8 h-8" />}
-            title="Skill Suggestions"
-            desc="Discover new in-demand skills relevant to your field."
-          /> */}
-        </div>
-      </section>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <FeatureCard
+      icon={<Brain className="text-emerald-500 w-8 h-8" />}
+      title="AI Profile Summary"
+      desc="Generate professional summaries tailored to your background and skills."
+    />
+    <FeatureCard
+      icon={<PenTool className="text-sky-500 w-8 h-8" />}
+      title="Resume Analyzer"
+      desc="Score and improve your resume for ATS and recruiter visibility."
+    />
+    <FeatureCard
+      icon={<Mail className="text-blue-500 w-8 h-8" />}
+      title="Cold Email Generator"
+      desc="Create polished outreach emails for recruiters or clients instantly."
+    />
+    <FeatureCard
+      icon={<FileText className="text-emerald-500 w-8 h-8" />}
+      title="Cover Letter Creator"
+      desc="Craft job-ready cover letters customized to the role."
+    />
+    <FeatureCard
+      icon={<Sparkles className="text-pink-500 w-8 h-8" />}
+      title="Interview Q&A"
+      desc="Generate realistic interview questions and AI-powered answers."
+    />
+    <FeatureCard
+      icon={<Briefcase className="text-indigo-500 w-8 h-8" />}
+      title="Job Role Matcher"
+      desc="Find the best job roles based on your skills and experience."
+    />
+    <FeatureCard
+      icon={<Lightbulb className="text-amber-500 w-8 h-8" />}
+      title="Skill Suggestions"
+      desc="Discover missing skills to boost your career profile."
+    />
+    <FeatureCard
+      icon={<Headphones className="text-red-500 w-8 h-8" />}
+      title="Support & Assistance"
+      desc="Easily contact our team for help or feature requests."
+    />
+  </div>
+</section>
+
 
       {/* ---------- HOW IT WORKS ---------- */}
       <section className="py-20 px-6 bg-slate-100 text-center">
