@@ -1,4 +1,4 @@
-# 🚀 AI Profile Builder
+# 🚀 Elevatr - AI Profile Builder
 
 ### *Create Smart, Professional Profiles Using AI*
 
