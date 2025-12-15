@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "AI Profile Builder",
+  title: "Evelatr - AI Profile Builder",
   description: "Build smarter profiles with AI — resume summaries, skills, cold emails, and cover letters.",
 };
 
