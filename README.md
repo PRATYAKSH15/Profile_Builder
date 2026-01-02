@@ -7,6 +7,7 @@ AI Profile Builder is a modern profile-enhancing platform that helps users gener
 Built with **Next.js 15**, **PostgreSQL**, **Prisma**, **Clerk**, and **Google Gemini AI** — featuring a clean, responsive UI powered by **TailwindCSS**, **ShadCN**, and **Framer Motion**.
 
 ![App Screenshot](hero.png "AI Profile Builder")
+![App Screenshot](feature.png "Impactful Features")
 
 ---
 
