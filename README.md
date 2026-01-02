@@ -2,7 +2,7 @@
 
 ### *Create Smart, Professional Profiles Using AI*
 
-AI Profile Builder is a modern resume-enhancing platform that helps users generate AI-crafted professional content including profile summaries, skill suggestions, cold emails, cover letters, and comprehensive resume analysis.
+AI Profile Builder is a modern profile-enhancing platform that helps users generate AI-crafted professional content including profile summaries, skill suggestions, cold emails, cover letters, and comprehensive resume analysis.
 
 Built with **Next.js 15**, **PostgreSQL**, **Prisma**, **Clerk**, and **Google Gemini AI** — featuring a clean, responsive UI powered by **TailwindCSS**, **ShadCN**, and **Framer Motion**.
 
